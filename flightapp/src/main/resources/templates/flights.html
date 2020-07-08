@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    
+    <head>
+        <title>List of Flights from/to Lisbon Airport</title></head>
+    <body>
+<!--        <form action="/states" method="get">
+            <input type="submit" name="States" value="States" />
+        </form>-->
+        <pre style="word-wrap: break-word; white-space: pre-wrap;" th:text="${flights}"></pre>
+    </body>
+</html>
