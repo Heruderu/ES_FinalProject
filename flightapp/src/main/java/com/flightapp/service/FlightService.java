@@ -88,5 +88,15 @@ public class FlightService {
         }
         return requestedFlights;
     }
+
+    public void delete(String id) {
+        repository.deleteById(Integer.parseInt(id));
+        Iterable<Flight> results = repository.findAll();
+        List<Flight> requestedFlights = new ArrayList<>();
+        for (Flight result : results) {
+            requestedFlights.add(result);
+        }
+        this.flights = requestedFlights;
+    }
     
 }

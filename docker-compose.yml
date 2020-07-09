@@ -10,6 +10,7 @@ services:
     depends_on: [flightdb]
     environment:
     - SERVER_HOST=http://flightserver:8081/
+    - DB_HOST=flightdb:3306
     restart: always
   flightdb:
     build: ./mysql

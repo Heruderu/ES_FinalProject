@@ -17,6 +17,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.view.RedirectView;
@@ -41,15 +44,15 @@ public class FlightController {
             return builder.build();
     }
     
-    @GetMapping("/")
-    public RedirectView redirectWithUsingRedirectView() {
-        return new RedirectView("/flights");
-    }
+//    @GetMapping("/")
+//    public RedirectView redirectWithUsingRedirectView() {
+//        return new RedirectView("/flights");
+//    }
     
     @GetMapping("/flights")
-    public String flightsPage(Model model, RestTemplate restTemplate) throws JsonProcessingException {
+    public String flightsPage(Model model, RestTemplate restTemplate) {
         model.addAttribute("appName", appName);
-        model.addAttribute("flights", flightService.getFlight());
+        model.addAttribute("flights", flightService.showAll());
 
         return "flights";
     }
@@ -61,4 +64,12 @@ public class FlightController {
 
         return "show";
     }
+    
+    @RequestMapping(value = "/delete/{id}")
+    private String deleteFlight(@PathVariable(name = "id") String id){
+        LOG.info("Deleted flight of id " + id);
+        flightService.delete(id);
+        return "redirect:/flights";
+    }
+    
 }

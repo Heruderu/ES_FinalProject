@@ -21,7 +21,7 @@ public class Flight {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Integer id;
     
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date departureDate;
@@ -33,7 +33,17 @@ public class Flight {
     private String arrivalAirport;
     private long duration;
 
-    public long getId() {
+    public Flight(Integer id, Date departureDate, Date arrivalDate, String airline, String departureAirport, String arrivalAirport, long duration) {
+        this.id = id;
+        this.departureDate = departureDate;
+        this.arrivalDate = arrivalDate;
+        this.airline = airline;
+        this.departureAirport = departureAirport;
+        this.arrivalAirport = arrivalAirport;
+        this.duration = duration;
+    }
+
+    public Integer getId() {
         return id;
     }
 
@@ -61,7 +71,7 @@ public class Flight {
         return duration;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
