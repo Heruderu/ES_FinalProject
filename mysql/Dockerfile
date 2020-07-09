@@ -1,0 +1,5 @@
+FROM mysql:latest
+ENV MYSQL_DATABASE flight_db
+ENV MYSQL_ROOT_PASSWORD flight
+ENV MYSQL_USER flightapp
+ENV MYSQL_PASSWORD flight

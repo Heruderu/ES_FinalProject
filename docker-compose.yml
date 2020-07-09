@@ -1,0 +1,31 @@
+version: '3'
+services:
+  flightapp:
+    build: ./flightapp
+    image: flightapp
+    ports:
+    - "54000:8080"
+    networks:
+    - net
+    depends_on: [flightdb]
+    environment:
+    - SERVER_HOST=http://flightserver:8081/
+    restart: always
+  flightdb:
+    build: ./mysql
+    image: flightdb
+    ports:
+    - "54006:3306"
+    networks:
+    - net
+  flightserver:
+    build: ./flightserver
+    image: flightserver
+    ports:
+    - "54001:8081"
+    networks:
+    - net
+
+networks:
+  net:
+    driver: bridge
