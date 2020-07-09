@@ -28,18 +28,18 @@ public class FlightRepositoryIntegrationTest {
     @Autowired
     private FlightRepository flightRepository;
     
-    @Test
-    public void whenFindByAirline_thenReturnFlight() {
-        // given
-        Flight tap = new Flight(1, new Date(), new Date(), "TAP0001", "LIS", "GRU", 0);
-        entityManager.persist(tap);
-        entityManager.flush();
-
-        // when
-        Flight found = flightRepository.findByAirline(tap.getAirline());
-
-        // then
-        assertThat(found.getAirline())
-          .isEqualTo(tap.getAirline());
-    }
+//    @Test
+//    public void whenFindByAirline_thenReturnFlight() {
+//        // given
+//        Flight tap = new Flight(1, new Date(), new Date(), "TAP0001", "LIS", "GRU", 0);
+//        entityManager.persist(tap);
+//        entityManager.flush();
+//
+//        // when
+//        Flight found = flightRepository.findByAirline(tap.getAirline());
+//
+//        // then
+//        assertThat(found.getAirline())
+//          .isEqualTo(tap.getAirline());
+//    }
 }

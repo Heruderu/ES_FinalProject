@@ -33,16 +33,6 @@ public class Flight {
     private String arrivalAirport;
     private long duration;
 
-    public Flight(Integer id, Date departureDate, Date arrivalDate, String airline, String departureAirport, String arrivalAirport, long duration) {
-        this.id = id;
-        this.departureDate = departureDate;
-        this.arrivalDate = arrivalDate;
-        this.airline = airline;
-        this.departureAirport = departureAirport;
-        this.arrivalAirport = arrivalAirport;
-        this.duration = duration;
-    }
-
     public Integer getId() {
         return id;
     }
