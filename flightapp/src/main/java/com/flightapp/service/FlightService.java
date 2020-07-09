@@ -42,7 +42,7 @@ public class FlightService {
         }
         Gson gson = new Gson();
         String json = gson.toJson(this.flights);
-        if (json.equals("[]")) json = "No flights found!\n";
+        if (json.equals("[]")) json = "No flights found!";
         return json;
     }
     
@@ -50,7 +50,9 @@ public class FlightService {
     public void setFlight() {
         this.error = null;
 
-        String uri = "http://localhost:54000/flights";
+        String uri = System.getenv("SERVER_HOST");
+        uri += "flights";
+        
         try {
             Flight requestedFlights[] = restTemplate.getForObject(uri, Flight[].class);
             List<Flight> portugalFlights = new ArrayList<>();
@@ -65,7 +67,7 @@ public class FlightService {
             }
             this.flights = portugalFlights;
         } catch (HttpClientErrorException.NotFound e) {
-            this.error = "No flights found!\n";
+            this.error = "No flights found!";
         }
     }
     
