@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                sh 'mvn clean package'
+                sh 'docker-compose build'
             }
         }
         stage('Test') {
@@ -14,7 +15,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                sh 'docker-compose up -d'
             }
         }
     }
