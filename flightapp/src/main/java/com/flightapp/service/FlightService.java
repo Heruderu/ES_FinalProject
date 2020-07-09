@@ -98,5 +98,10 @@ public class FlightService {
         }
         this.flights = requestedFlights;
     }
+
+    public void deleteAll() {
+        repository.deleteAll();
+        this.flights.clear();
+    }
     
 }

@@ -72,4 +72,11 @@ public class FlightController {
         return "redirect:/flights";
     }
     
+    @RequestMapping(value = "/deleteAll")
+    private String deleteFlight(){
+        LOG.info("Deleted all flights.");
+        flightService.deleteAll();
+        return "redirect:/flights";
+    }
+    
 }
